@@ -1,0 +1,48 @@
+# Art Asset Generation — Walkthrough
+
+## ✅ Generated Assets (17 files)
+
+All saved to `D:\TEST\Interesting Somehow Recipe\p1.1\art_assets\`
+
+### Food Icon Sprite Sheets (8 sheets = 60 icons total)
+| File | Category | Count |
+|------|----------|-------|
+| [icons_vegetables.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icons_vegetables.png) | 西红柿, 白菜, 土豆, 胡萝卜, 洋葱, 黄瓜, 茄子, 辣椒, 蘑菇, 玉米, 生菜, 西兰花 | 12 |
+| [icons_fruits.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icons_fruits.png) | 苹果, 香蕉, 草莓, 柠檬, 橙子, 西瓜, 葡萄, 芒果 | 8 |
+| [icons_meat.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icons_meat.png) | 猪肉, 牛肉, 鸡肉, 羊肉, 培根, 香肠, 肉糜, 排骨 | 8 |
+| [icons_seafood.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icons_seafood.png) | 虾, 鱼, 蟹, 贝类, 鱿鱼, 三文鱼 | 6 |
+| [icons_dairy.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icons_dairy.png) | 牛奶, 鸡蛋, 奶酪, 黄油, 酸奶 | 5 |
+| [icons_drinks.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icons_drinks.png) | 啤酒, 红酒, 可乐, 雪碧, 果汁, 料酒 | 6 |
+| [icons_staples.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icons_staples.png) | 米饭, 面条, 面粉, 面包, 土司, 饺子皮 | 6 |
+| [icons_sauces.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icons_sauces.png) | 老干妈, 酱油, 醋, 盐, 糖, 蒜, 姜, 花椒 | 8 |
+
+### Special Icons (2)
+- [icon_custom_basket.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icon_custom_basket.png) — ✨🧺 发光菜篮
+- [icon_custom_orb.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/icon_custom_orb.png) — ✨🔮 发光光球
+
+### Scene Assets (6)
+- [pot_idle.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/pot_idle.png) — 待机状态锅（金色符文光晕）
+- [pot_cooking.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/pot_cooking.png) — 烹饪中（蒸汽+食材翻滚）
+- [pot_success.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/pot_success.png) — 成功（金色星光粒子）
+- [pot_fail.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/pot_fail.png) — 失败（黑烟+锅盖弹起）
+- [bg_counter.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/bg_counter.png) — 出单台面背景
+- [bg_main.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/bg_main.png) — 主页面深色渐变背景
+
+### Decorative Elements (1)
+- [deco_plant.png](file:///D:/TEST/Interesting%20Somehow%20Recipe/p1.1/art_assets/deco_plant.png) — 卡通绿植盆栽
+
+## ⏳ Remaining (9 files — quota exhausted)
+
+| File | Description |
+|------|-------------|
+| `deco_pepper_grinder.png` | 木质胡椒研磨器 |
+| `deco_pendant_light.png` | 暖色吊灯 |
+| `logo.png` | App logo/标题图 |
+| `ticket_template.png` | 空白纸条模板 |
+| `icons_cuisine_types.png` | 菜系图标集 (中/西/日/韩…) |
+| `icons_mode_toggle.png` | 生存/创造模式图标 |
+| `icons_taste_sliders.png` | 口味滑块图标 (酸甜苦辣咸🔥) |
+| `icons_category_tabs.png` | 分类标签图标 |
+| `ui_buttons.png` | 按钮设计集 |
+
+Quota resets in ~5 hours. Ask me to continue generating after reset.
