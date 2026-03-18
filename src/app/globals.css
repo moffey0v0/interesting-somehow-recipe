@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  /* ─── Color Palette (warm kitchen theme) ─── */
+  --color-kitchen-dark: #1C1C28;
+  --color-kitchen-mid: #2A2A3A;
+  --color-marble: #F5F0E8;
+  --color-wood-gold: #C8956C;
+  --color-oak-brown: #8B6B4A;
+  --color-chef-red: #E85D4A;
+  --color-herb-green: #5CB85C;
+  --color-rune-glow: #F0D58C;
+  --color-creative-orange: #F39C12;
+  --color-text-primary: #F0EDE6;
+  --color-text-secondary: #A0A0A0;
+  --color-deep-brown: #3D3024;
+  --color-panel-bg: #FDF8F0;
+  --color-panel-border: #D4B896;
+  --color-warm-bg: #F9F3EB;
+
+  /* ─── Font Families ─── */
+  --font-sans: 'M PLUS Rounded 1c', 'Nunito', 'Noto Sans SC', sans-serif;
+  --font-display: 'Fredoka', 'M PLUS Rounded 1c', 'Noto Sans SC', cursive;
+}
+
+/* ─── Global Styles ─── */
+body {
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: inherit;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 149, 108, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 149, 108, 0.5);
+}
+
+/* ─── Range Input Custom ─── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 4px;
+  background: #E8DDD0;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-wood-gold);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"].wildness-slider {
+  background: linear-gradient(90deg, #F0D58C, #E85D4A);
+}
+
+input[type="range"].wildness-slider::-webkit-slider-thumb {
+  background: var(--color-chef-red);
+  box-shadow: 0 0 6px rgba(232, 93, 74, 0.4);
+}
+
+/* ─── Recipe Ticket serrated edge ─── */
+.recipe-ticket {
+  position: relative;
+  background: var(--color-marble);
+  color: var(--color-deep-brown);
+}
+
+.recipe-ticket::before,
+.recipe-ticket::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-repeat: repeat-x;
+  background-size: 20px 10px;
+}
+
+.recipe-ticket::before {
+  top: -10px;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10L20 0H0z' fill='%23F5F0E8'/%3E%3C/svg%3E");
+}
+
+.recipe-ticket::after {
+  bottom: -10px;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0L0 10H20z' fill='%23F5F0E8'/%3E%3C/svg%3E");
+}
+
+/* ─── Panel common style ─── */
+.panel-section {
+  background: var(--color-panel-bg);
+  border: 1.5px solid var(--color-panel-border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+/* ─── Generate Button ─── */
+.btn-generate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--color-wood-gold);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: 2px solid var(--color-oak-brown);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.btn-generate:hover {
+  background: var(--color-oak-brown);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(200, 149, 108, 0.4);
+}
+
+.btn-generate:active {
+  transform: translateY(0);
+}
+
+.btn-generate:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
