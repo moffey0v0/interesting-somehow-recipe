@@ -48,12 +48,12 @@ export default function Home() {
 
         {/* ── MagicPot ────────────────────────────────────────────────────────
             Desktop : center column, fills remaining height
-            Mobile  : always at top, fixed height so generate button stays reachable */}
+            Mobile  : always at top, auto-height (page scrolls), no overflow clip */}
         <div className={[
           'order-1 md:order-2',
-          'h-[400px] md:h-auto',
+          'md:h-auto',
           'md:flex-1 md:min-h-0',
-          'overflow-hidden flex flex-col',
+          'md:overflow-hidden flex flex-col',
           'px-3 pt-2 pb-1 md:p-0',
         ].join(' ')}>
           <MagicPot />
@@ -87,7 +87,7 @@ export default function Home() {
               : 'text-deep-brown/50 hover:text-deep-brown/70'}`}
           onClick={() => setMobileTab('style')}
         >
-          ⚙️ {isZh ? '设置' : 'Settings'}
+          ⚙️ {isZh ? '烹饪偏好' : 'Settings'}
         </button>
         <div className="w-px bg-panel-border" />
         <button

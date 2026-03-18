@@ -35,12 +35,12 @@ interface CookingStore {
     reset: () => void;
 }
 
-const initialTaste: TasteProfile = { sour: 30, sweet: 30, bitter: 10, spicy: 50, salty: 40 };
+const initialTaste: TasteProfile = { sour: 0, sweet: 0, bitter: 0, spicy: 0, salty: 0 };
 
 export const useCookingStore = create<CookingStore>((set) => ({
     view: 'landing',
     selectedIngredients: [],
-    cuisineMain: null,
+    cuisineMain: 'random',
     cuisineSub: null,
     mode: 'creative',
     taste: { ...initialTaste },
@@ -116,7 +116,7 @@ export const useCookingStore = create<CookingStore>((set) => ({
     setLocale: (locale) => set({ locale }),
     reset: () => set({
         selectedIngredients: [],
-        cuisineMain: null,
+        cuisineMain: 'random',
         cuisineSub: null,
         mode: 'creative',
         taste: { ...initialTaste },

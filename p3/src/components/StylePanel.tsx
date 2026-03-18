@@ -20,10 +20,27 @@ export default function StylePanel() {
     const [expandedCuisine, setExpandedCuisine] = useState<string | null>(null);
     const isZh = locale === 'zh';
 
+    const allTastesZero = Object.values(taste).every(v => v === 0);
+    const cuisineNotSelected = cuisineMain === null;
+
+    const glowAnim = {
+        boxShadow: [
+            '0 0 0px rgba(200,149,108,0)',
+            '0 0 14px rgba(200,149,108,0.45)',
+            '0 0 0px rgba(200,149,108,0)',
+        ],
+    };
+    const glowTransition = { duration: 2, repeat: Infinity, ease: 'easeInOut' as const };
+    const noGlow = { boxShadow: '0 0 0px rgba(0,0,0,0)' };
+
     return (
         <aside id="tour-style-panel" className="style-panel space-y-3 pr-1 pb-2">
             {/* ─── Cooking Style ─── */}
-            <div className="panel-section flex flex-col min-h-0 flex-shrink-0">
+            <motion.div
+                className="panel-section flex flex-col min-h-0 flex-shrink-0"
+                animate={cuisineNotSelected ? glowAnim : noGlow}
+                transition={cuisineNotSelected ? glowTransition : {}}
+            >
                 <h3 className="text-base font-bold text-deep-brown mb-3 tracking-wide shrink-0">
                     {isZh ? '菜系选择' : 'Cooking Style'}
                 </h3>
@@ -92,7 +109,7 @@ export default function StylePanel() {
                         );
                     })}
                 </div>
-            </div>
+            </motion.div>
 
             {/* ─── Mode Toggle ─── */}
             <div id="tour-mode-taste" className="panel-section">
@@ -136,9 +153,18 @@ export default function StylePanel() {
             </div>
 
             {/* ─── Taste Sliders ─── */}
-            <div className="panel-section">
-                <h3 className="text-base font-bold text-deep-brown mb-3 tracking-wide">
+            <motion.div
+                className="panel-section"
+                animate={allTastesZero ? glowAnim : noGlow}
+                transition={allTastesZero ? glowTransition : {}}
+            >
+                <h3 className="text-base font-bold text-deep-brown mb-3 tracking-wide flex items-center gap-2">
                     {isZh ? '口味倾向' : 'Taste Sliders'}
+                    {allTastesZero && (
+                        <span className="text-xs font-normal text-deep-brown/50 bg-deep-brown/8 rounded-md px-1.5 py-0.5 border border-deep-brown/15">
+                            {isZh ? '全0 = 不限制' : 'All 0 = No limit'}
+                        </span>
+                    )}
                 </h3>
                 <div className="space-y-3">
                     {TASTE_KEYS.map(t => (
@@ -158,7 +184,7 @@ export default function StylePanel() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
 
             {/* ─── Wildness ─── */}
             <div id="tour-wildness" className="panel-section">
