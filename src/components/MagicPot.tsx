@@ -96,7 +96,7 @@ export default function MagicPot() {
     };
 
     return (
-        <div className="magic-pot h-full flex flex-col gap-3">
+        <div className="magic-pot md:h-full flex flex-col gap-3">
             {/* ─── Cauldron Section ─── */}
             <div className="panel-section flex flex-col items-center shrink-0">
                 <h3 className="text-base font-bold text-deep-brown mb-2 tracking-widest uppercase w-full text-center">
@@ -171,12 +171,13 @@ export default function MagicPot() {
             </div>
 
             {/* ─── Selected Ingredients ─── */}
-            <div id="tour-magic-pot" className="panel-section flex-1 flex flex-col min-h-0">
+            {/* Mobile: auto-height (page scrolls); Desktop: flex-1 with internal scroll */}
+            <div id="tour-magic-pot" className="panel-section md:flex-1 md:flex md:flex-col md:min-h-0">
                 <h3 className="text-base font-bold text-deep-brown mb-2 tracking-widest uppercase text-center shrink-0">
                     {isZh ? '📋 已选食材' : '📋 Selected Ingredients'}
                 </h3>
-                <div className="flex-1 relative mt-1">
-                    <div className="absolute inset-0 overflow-y-auto custom-scrollbar pr-2 pb-2">
+                <div className="md:flex-1 md:relative mt-1">
+                    <div className="md:absolute md:inset-0 md:overflow-y-auto custom-scrollbar pr-2 pb-2">
                         <div className="space-y-2">
                             <AnimatePresence>
                                 {selectedIngredients.length === 0 && (
