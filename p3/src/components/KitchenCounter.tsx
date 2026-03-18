@@ -215,7 +215,7 @@ function RecipeTicket({ recipe, index }: { recipe: Recipe; index: number }) {
 }
 
 export default function KitchenCounter() {
-    const { recipes, setCookingState, setRecipes, setView, locale, setLocale } = useCookingStore();
+    const { recipes, setCookingState, setRecipes, setView, locale } = useCookingStore();
     const isZh = locale === 'zh';
 
     const handleBack = () => {
@@ -247,13 +247,6 @@ export default function KitchenCounter() {
                     {isZh ? '← 返回厨房' : '← Back to Kitchen'}
                 </button>
 
-                {/* Language Switch */}
-                <button
-                    className="px-5 py-2.5 rounded-xl bg-wood-gold/20 text-deep-brown text-base font-bold border-2 border-panel-border shadow-lg hover:bg-wood-gold/40 transition-colors backdrop-blur-sm"
-                    onClick={() => setLocale(isZh ? 'en' : 'zh')}
-                >
-                    {isZh ? 'EN' : '中文'}
-                </button>
             </div>
 
             {/* Recipe Tickets */}

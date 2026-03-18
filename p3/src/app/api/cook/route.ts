@@ -193,6 +193,10 @@ export async function POST(req: Request) {
             .map((i: { name: string; quantity: number }) => `${i.name} (x${i.quantity})`)
             .join('，');
 
+        const langInstruction = isZh
+            ? `- 输出语言：【仅中文】。所有 *_en 字段（name_en、description_en、risk_reason_en、cuisine_en、cooking_time_en、difficulty_en、safety_note_en、category_en，以及食材/步骤中的 name_en、unit_en、instruction_en、duration_en、tip_en，以及 origin 中的 original_dish_en、description_en）一律设为空字符串 ""，以节省生成时间。中文字段必须完整填写。`
+            : `- Output language: [English only]. Set all non-_en text fields (name, description, risk_reason, cuisine, cooking_time, difficulty, safety_note, category, and ingredient/step name, unit, instruction, duration, tip, origin original_dish, origin description) to empty string "". All *_en fields must be fully filled in English.`;
+
         const userPrompt = `## 本次烹饪挑战
 
 - 模式：【${mode === 'survival' ? '生存模式' : '创造模式'}】
@@ -200,6 +204,7 @@ export async function POST(req: Request) {
 - 提供食材：${ingredientsList}
 - 口味要求：酸${taste.sour}/甜${taste.sweet}/苦${taste.bitter}/辣${taste.spicy}/咸${taste.salty}（满分100）
 - 狂野程度：${wildnessNum}/100
+${langInstruction}
 - 请生成恰好 3 个菜谱变种。
 
 【本次请求的安全处理决策（最高优先级，必须严格执行）】
