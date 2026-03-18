@@ -158,13 +158,14 @@ export default function StylePanel() {
                 animate={allTastesZero ? glowAnim : noGlow}
                 transition={allTastesZero ? glowTransition : {}}
             >
-                <h3 className="text-base font-bold text-deep-brown mb-3 tracking-wide flex items-center gap-2">
+                <h3 className="relative group text-base font-bold text-deep-brown mb-3 tracking-wide flex items-center gap-1.5">
                     {isZh ? '口味倾向' : 'Taste Sliders'}
-                    {allTastesZero && (
-                        <span className="text-xs font-normal text-deep-brown/50 bg-deep-brown/8 rounded-md px-1.5 py-0.5 border border-deep-brown/15">
-                            {isZh ? '全0 = 不限制' : 'All 0 = No limit'}
-                        </span>
-                    )}
+                    <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-deep-brown/15 text-deep-brown/60 text-xs font-bold cursor-default select-none">?</span>
+                    <div className="absolute bottom-full mb-1 right-0 w-48 bg-deep-brown text-warm-bg text-xs rounded-xl p-3 shadow-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-150 z-50 leading-relaxed">
+                        <p className="font-bold mb-1">{isZh ? '🔢 全部为 0 = 不限制口味' : '🔢 All 0 = No flavor limit'}</p>
+                        <p className="text-warm-bg/80">{isZh ? '数值越高，AI 越偏向该口味。全为 0 时 AI 自由发挥，不受任何口味约束。' : 'Higher value = AI biases toward that flavor. All at 0 = AI freely chooses flavors.'}</p>
+                        <div className="absolute top-full right-3 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-deep-brown" />
+                    </div>
                 </h3>
                 <div className="space-y-3">
                     {TASTE_KEYS.map(t => (

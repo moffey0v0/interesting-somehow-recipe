@@ -78,8 +78,11 @@ export default function Home() {
 
       <TutorialTour onMobileTabSwitch={setMobileTab} />
 
-      {/* ── Mobile tab bar: sticky at bottom of viewport while scrolling ──── */}
-      <div className="md:hidden sticky bottom-0 z-20 flex bg-panel-bg border-t-2 border-panel-border">
+      {/* ── Spacer so page content isn't hidden behind the fixed mobile tab bar ──── */}
+      <div className="md:hidden h-20" />
+
+      {/* ── Mobile tab bar: fixed floating bar at bottom of viewport ──── */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-20 flex bg-panel-bg border-t-2 border-panel-border">
         <button
           className={`flex-1 py-3 text-sm font-bold flex items-center justify-center gap-1.5 transition-colors
             ${mobileTab === 'style'
