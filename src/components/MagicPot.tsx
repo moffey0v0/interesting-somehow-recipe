@@ -203,14 +203,16 @@ export default function MagicPot() {
                                             {isZh ? si.ingredient.name : si.ingredient.name_en}
                                         </span>
                                         <button
-                                            className="w-7 h-7 rounded bg-panel-border/30 text-deep-brown font-bold text-base flex items-center justify-center hover:bg-chef-red/20 transition-colors"
+                                            className="w-7 h-7 rounded bg-panel-border/30 text-deep-brown font-bold text-base flex items-center justify-center hover:bg-chef-red/20 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                                            disabled={cookingState === 'cooking'}
                                             onClick={() => decrementIngredient(si.ingredient.id)}
                                         >
                                             −
                                         </button>
                                         <span className="w-7 text-center text-base font-bold text-deep-brown">{si.quantity}</span>
                                         <button
-                                            className="w-7 h-7 rounded bg-panel-border/30 text-deep-brown font-bold text-base flex items-center justify-center hover:bg-herb-green/20 transition-colors"
+                                            className="w-7 h-7 rounded bg-panel-border/30 text-deep-brown font-bold text-base flex items-center justify-center hover:bg-herb-green/20 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                                            disabled={cookingState === 'cooking'}
                                             onClick={() => incrementIngredient(si.ingredient.id)}
                                         >
                                             +

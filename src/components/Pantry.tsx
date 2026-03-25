@@ -8,7 +8,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Pantry() {
-    const { addIngredient, addCustomIngredient, locale } = useCookingStore();
+    const { addIngredient, addCustomIngredient, locale, cookingState } = useCookingStore();
+    const locked = cookingState === 'cooking';
     const [activeTab, setActiveTab] = useState<IngredientCategory>('vegetables');
     const [showCustomModal, setShowCustomModal] = useState(false);
     const [customName, setCustomName] = useState('');
@@ -40,7 +41,8 @@ export default function Pantry() {
                                 ${activeTab === cat.id
                                     ? 'bg-wood-gold text-white shadow-sm'
                                     : 'bg-warm-bg text-deep-brown/70 hover:bg-wood-gold/20 border border-panel-border/50'
-                                }`}
+                                } disabled:opacity-40 disabled:cursor-not-allowed`}
+                            disabled={locked}
                             onClick={() => setActiveTab(cat.id)}
                         >
                             {isZh ? cat.name : cat.name_en}
@@ -55,9 +57,10 @@ export default function Pantry() {
                         {ingredients.map(ing => (
                             <motion.button
                                 key={ing.id}
-                                className="flex flex-col items-center p-2.5 rounded-xl bg-warm-bg hover:bg-wood-gold/10 transition-colors border border-transparent hover:border-wood-gold/30"
-                                whileTap={{ scale: 0.85 }}
-                                onClick={() => addIngredient(ing)}
+                                className="flex flex-col items-center p-2.5 rounded-xl bg-warm-bg hover:bg-wood-gold/10 transition-colors border border-transparent hover:border-wood-gold/30 disabled:opacity-40 disabled:cursor-not-allowed"
+                                whileTap={locked ? {} : { scale: 0.85 }}
+                                disabled={locked}
+                                onClick={() => { if (!locked) addIngredient(ing); }}
                             >
                                 <motion.div
                                     whileTap={{ scale: 1.3, y: -8 }}
@@ -82,10 +85,11 @@ export default function Pantry() {
                 <motion.button
                     className="shrink-0 mt-3 flex items-center justify-center gap-2 py-2.5 rounded-xl
                         bg-warm-bg border border-panel-border/60 hover:border-wood-gold/50 hover:bg-wood-gold/10
-                        transition-colors cursor-pointer"
-                    animate={{ boxShadow: ['0 0 0px rgba(200,149,108,0)', '0 0 8px rgba(200,149,108,0.25)', '0 0 0px rgba(200,149,108,0)'] }}
+                        transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                    animate={locked ? {} : { boxShadow: ['0 0 0px rgba(200,149,108,0)', '0 0 8px rgba(200,149,108,0.25)', '0 0 0px rgba(200,149,108,0)'] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    onClick={() => setShowCustomModal(true)}
+                    disabled={locked}
+                    onClick={() => { if (!locked) setShowCustomModal(true); }}
                 >
                     <Image src="/assets/icon_custom_basket.png" alt="basket" width={28} height={28} className="object-contain" />
                     <span className="text-sm font-bold text-deep-brown">

@@ -16,7 +16,8 @@ const TASTE_KEYS: { key: keyof TasteProfile; label: string; label_en: string; ic
 ];
 
 export default function StylePanel() {
-    const { cuisineMain, cuisineSub, setCuisine, mode, setMode, taste, setTaste, wildness, setWildness, locale } = useCookingStore();
+    const { cuisineMain, cuisineSub, setCuisine, mode, setMode, taste, setTaste, wildness, setWildness, locale, cookingState } = useCookingStore();
+    const locked = cookingState === 'cooking';
     const [expandedCuisine, setExpandedCuisine] = useState<string | null>(null);
     const isZh = locale === 'zh';
 
@@ -62,7 +63,9 @@ export default function StylePanel() {
                                             ? 'bg-wood-gold/20 text-deep-brown font-bold border border-wood-gold/40'
                                             : 'text-deep-brown/80 hover:bg-wood-gold/10'
                                         }`}
+                                    disabled={locked}
                                     onClick={() => {
+                                        if (locked) return;
                                         if (c.sub.length === 0) {
                                             setCuisine(c.id, null);
                                             setExpandedCuisine(null);
@@ -97,7 +100,8 @@ export default function StylePanel() {
                                                             ? 'bg-wood-gold/30 text-deep-brown font-bold'
                                                             : 'text-deep-brown/60 hover:text-deep-brown'
                                                         }`}
-                                                    onClick={() => setCuisine(c.id, s.id)}
+                                                    disabled={locked}
+                                                    onClick={() => { if (!locked) setCuisine(c.id, s.id); }}
                                                 >
                                                     {isZh ? s.name : s.name_en}
                                                 </button>
@@ -133,9 +137,10 @@ export default function StylePanel() {
                         </span>
                     </div>
                     <button
-                        className="relative w-14 h-7 rounded-full transition-colors"
+                        className="relative w-14 h-7 rounded-full transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                         style={{ backgroundColor: mode === 'creative' ? '#F39C12' : '#5CB85C' }}
-                        onClick={() => setMode(mode === 'survival' ? 'creative' : 'survival')}
+                        onClick={() => { if (!locked) setMode(mode === 'survival' ? 'creative' : 'survival'); }}
+                        disabled={locked}
                     >
                         <motion.div
                             className="absolute top-1 w-5 h-5 rounded-full bg-white shadow-md"
@@ -178,8 +183,9 @@ export default function StylePanel() {
                                 type="range"
                                 min={0} max={100}
                                 value={taste[t.key]}
-                                onChange={e => setTaste(t.key, Number(e.target.value))}
-                                className="flex-1"
+                                onChange={e => { if (!locked) setTaste(t.key, Number(e.target.value)); }}
+                                disabled={locked}
+                                className="flex-1 disabled:opacity-40 disabled:cursor-not-allowed"
                             />
                             <span className="w-8 text-right text-sm text-deep-brown/50 font-mono">{taste[t.key]}</span>
                         </div>
@@ -211,8 +217,9 @@ export default function StylePanel() {
                         type="range"
                         min={0} max={100}
                         value={wildness}
-                        onChange={e => setWildness(Number(e.target.value))}
-                        className="flex-1 wildness-slider"
+                        onChange={e => { if (!locked) setWildness(Number(e.target.value)); }}
+                        disabled={locked}
+                        className="flex-1 wildness-slider disabled:opacity-40 disabled:cursor-not-allowed"
                     />
                     <span className="w-10 text-right text-base font-bold text-chef-red">{wildness}</span>
                 </div>
